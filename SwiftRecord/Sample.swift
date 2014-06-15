@@ -8,4 +8,7 @@
 
 class Mono {
     var name: String = "hoge"
+    func hoge() {
+        let moc = NSManagedObjectContext(coder: nil)
+    }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE4DCFAF194E31F600A1D61F /* PersistentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4DCFAE194E31F600A1D61F /* PersistentManager.swift */; };
+		FE4DCFB0194E31F600A1D61F /* PersistentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4DCFAE194E31F600A1D61F /* PersistentManager.swift */; };
 		FEC89794194E2A5C005570C2 /* SwiftRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC89789194E2A5C005570C2 /* SwiftRecord.framework */; };
 		FEC897A2194E2AA7005570C2 /* SwiftRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = FEFF9825194E1CA50044843F /* SwiftRecord.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FEC897A9194E2CCF005570C2 /* SwiftRecordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF9832194E1CA50044843F /* SwiftRecordTests.swift */; };
@@ -126,6 +128,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE4DCFAE194E31F600A1D61F /* PersistentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentManager.swift; sourceTree = "<group>"; };
 		FEC89789194E2A5C005570C2 /* SwiftRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC89793194E2A5C005570C2 /* SwiftRecord.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRecord.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEC897AA194E2CF5005570C2 /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 				FEFF9825194E1CA50044843F /* SwiftRecord.h */,
 				FEFF9823194E1CA50044843F /* Supporting Files */,
 				FEC897AA194E2CF5005570C2 /* Sample.swift */,
+				FE4DCFAE194E31F600A1D61F /* PersistentManager.swift */,
 			);
 			path = SwiftRecord;
 			sourceTree = "<group>";
@@ -414,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE4DCFB0194E31F600A1D61F /* PersistentManager.swift in Sources */,
 				FEC897AC194E2CF5005570C2 /* Sample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE4DCFAF194E31F600A1D61F /* PersistentManager.swift in Sources */,
 				FEC897AB194E2CF5005570C2 /* Sample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

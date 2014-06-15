@@ -7,6 +7,7 @@
 //
 
 @import Foundation;
+@import CoreData;
 //! Project version number for SwiftRecord.
 FOUNDATION_EXPORT double SwiftRecordVersionNumber;
 
