@@ -7,27 +7,29 @@
 //
 
 class PersistentManager {
-    let managedObjectModel = NSManagedObjectModel()
+    let managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(nil)
     let persistentStoreCoordinator: NSPersistentStoreCoordinator
-    let managedObjectContext: NSManagedObjectContext
+    let managedObjectContext: NSManagedObjectContext =
+    {
+        let moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType);
+        return moc;
+    }()
     init() {
+        self.persistentStoreCoordinator = PersistentManager.createPersistentStoreCoordinator(managedObjectModel)
+        self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
     }
     
-    func createPersistentStoreCoordinator() -> NSPersistentStoreCoordinator? {
-        let applicationSupportDirectory = NSSearchPathForDirectoriesInDomains(.ApplicationSupportDirectory, .UserDomainMask, true)[0] as String
+    class func createPersistentStoreCoordinator(managedObjectModel: NSManagedObjectModel) -> NSPersistentStoreCoordinator {        
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        let urls = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        let docUrl: NSURL = urls[urls.count - 1] as NSURL
+        let url = docUrl.URLByAppendingPathComponent("CoreData.sqlite")
         
-        let fileManager = NSFileManager.defaultManager();
-        let error:NSError? = nil
-        var isDirectory:CBool = false        
-        if (fileManager.fileExistsAtPath(applicationSupportDirectory, isDirectory: false)) {
-            if (!fileManager .createDirectoryAtURL(applicationSupportDirectory, withIntermediateDirectories: false, attributes: nil, error: &error)) {
-                return nil;
-            }
+        let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
+        let error: NSErrorPointer = nil
+        if !coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options, error: error) {
+            println("\(error)")
         }
-        
-        let storeUrl = NSURL.fileURLWithPath("\(applicationSupportDirectory)CoreModel.sqlite")
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeUrl, options: nil, error: &error)
         return coordinator;
     }
 }
